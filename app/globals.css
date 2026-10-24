@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap");
+
+:root {
+  --pink-50: #fff0f6;
+  --pink-100: #ffe3ee;
+  --pink-200: #ffc9dd;
+  --pink-300: #f9a8c6;
+  --pink-400: #ee7fa4;
+  --pink-500: #d63f7c;
+  --pink-600: #c2477a;
+  --berry: #8c1d4c;
+  --error: #b3124f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- background: polka dots + doodles ---------- */
+body {
+  font-family: "Montserrat", system-ui, sans-serif;
+  color: var(--berry);
+  min-height: 100vh;
+  background-color: #ffd3e4;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' fill='none' stroke='%23c2477a' stroke-opacity='.55' stroke-width='3' stroke-linejoin='round'%3E%3Cpath transform='translate(50 60)' fill='%23fff0f6' d='M0 -20Q3 -3 20 0Q3 3 0 20Q-3 3 -20 0Q-3 -3 0 -20Z'/%3E%3Cpath transform='translate(205 175) scale(.75)' fill='%23fff0f6' d='M0 -20Q3 -3 20 0Q3 3 0 20Q-3 3 -20 0Q-3 -3 0 -20Z'/%3E%3Cpath transform='translate(195 50)' fill='%23ffc9dd' d='M0 8C-14 -4 -9 -16 0 -9C9 -16 14 -4 0 8Z'/%3E%3Ccircle cx='70' cy='205' r='9'/%3E%3Ccircle cx='140' cy='120' r='4' fill='%23c2477a' fill-opacity='.55' stroke='none'/%3E%3C/svg%3E"),
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 0 6px, transparent 7px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.35) 0 6px, transparent 7px),
+    linear-gradient(135deg, #ffdbe9, #ffc0d9);
+  background-size: 260px 260px, 40px 40px, 40px 40px, 100% 100%;
+  background-position: 0 0, 0 0, 20px 20px, 0 0;
+  background-attachment: fixed;
+}
+
+/* ---------- login ---------- */
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--pink-100);
+  padding: 3rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  box-shadow: 0 18px 40px rgba(190, 60, 110, 0.28);
+  animation: pop 0.4s ease;
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.brand {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--pink-500);
+  letter-spacing: -0.5px;
+}
+.tagline {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pink-600);
+  margin-bottom: 1.2rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pink-600);
+  margin-top: 0.7rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--pink-400);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  transition: box-shadow 0.15s;
+}
+input::placeholder,
+textarea::placeholder { color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+input:focus,
+textarea:focus { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--pink-500); }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px var(--pink-400) inset;
+  -webkit-text-fill-color: #fff;
+}
+
+.link-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pink-600);
+  cursor: pointer;
+  margin-top: 0.2rem;
+}
+.link-btn:hover { text-decoration: underline; }
+
+.pill-btn {
+  align-self: center;
+  margin-top: 1.1rem;
+  padding: 0.6rem 2rem;
+  background: var(--pink-400);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #d4658c;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+.pill-btn:hover { background: #f38bad; }
+.pill-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #d4658c; }
+.pill-btn.outline {
+  margin: 0;
+  background: transparent;
+  color: var(--pink-500);
+  box-shadow: inset 0 0 0 2.5px var(--pink-500);
+  padding: 0.5rem 1.4rem;
+}
+.pill-btn.outline:hover { background: var(--pink-500); color: #fff; }
+
+/* error message below the button */
+.msg-error {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--error);
+  background: #fff;
+  border: 2px solid var(--pink-300);
+  border-radius: 14px;
+  padding: 0.6rem 0.9rem;
+  animation: shake 0.35s;
+}
+@keyframes shake {
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ---------- notes page ---------- */
+.notes-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.topbar {
+  background: var(--pink-100);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 12px 28px rgba(190, 60, 110, 0.22);
+}
+.topbar h1 { font-size: 1.3rem; font-weight: 800; color: var(--pink-500); }
+.topbar p { font-size: 0.85rem; font-weight: 600; color: var(--pink-600); }
+
+.note-form {
+  background: var(--pink-100);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  box-shadow: 0 12px 28px rgba(190, 60, 110, 0.22);
+}
+.note-form h2 { font-size: 1rem; font-weight: 700; color: var(--pink-500); }
+.note-form textarea { border-radius: 22px; resize: none; }
+.note-form .pill-btn { align-self: flex-start; margin-top: 0.3rem; }
+.note-form .msg-error { margin-top: 0.2rem; text-align: left; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.3rem;
+}
+
+.note {
+  position: relative;
+  padding: 1.6rem 1.2rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  box-shadow: 0 12px 24px rgba(190, 60, 110, 0.2);
+  animation: pop 0.3s ease;
+}
+/* little tape on top */
+.note::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 70px;
+  height: 20px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.note h3 { font-size: 1rem; font-weight: 800; color: var(--pink-500); }
+.note p { font-size: 0.9rem; font-weight: 500; white-space: pre-wrap; word-break: break-word; }
+.note small { font-size: 0.7rem; font-weight: 600; color: var(--pink-600); opacity: 0.8; }
+.c0 { background: #ffe3ee; }
+.c1 { background: #fff0f6; }
+.c2 { background: #ffd6e6; }
+.c3 { background: #f6e6ff; }
+
+.btn-delete {
+  align-self: flex-end;
+  background: #fff;
+  color: var(--pink-500);
+  border: 2px solid var(--pink-300);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-delete:hover { background: var(--pink-500); color: #fff; border-color: var(--pink-500); }
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-weight: 600;
+  color: var(--pink-600);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .login-card { padding: 2.2rem 1.4rem 2rem; }
+  .topbar { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-card, .note, .msg-error { animation: none; }
+}
